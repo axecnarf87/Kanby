@@ -5,7 +5,7 @@ import Item from "./Item.js";
 // Class for a single column in the user interface
 export default class Column {
 	constructor(id, title) {
-		const topDropZone = DropZone.createDropZone();
+		const topDropZone = DropZone.createDropZone(); // create dropzone for the top of the column
 
 		this.elements = {};
 		this.elements.root = Column.createRoot(id);
@@ -15,20 +15,19 @@ export default class Column {
 
 		this.elements.root.dataset.id = id;				// identify which column id
 		this.elements.title.textContent = title;		// title
-		this.elements.items.appendChild(topDropZone);	//
+		this.elements.items.appendChild(topDropZone);	// Append the dropzone to the top of the column (before any items)
 
-		// add listener to add new elements only for the first column
-		if (id === 1){
-			this.elements.addItem.addEventListener("click", () => {
-				const newItem = KanbanAPI.insertItem(id, "");
+		if (id === 1){ 		// add new elements only for the first column
+			this.elements.addItem.addEventListener("click", () => { // listener to 'add' button
+				const newItem = KanbanAPI.insertItem(id, ""); // add item into the column (to do)
 	
-				this.renderItem(newItem);
+				this.renderItem(newItem);	// render thes new item
 			});
 		}
 
-
-		KanbanAPI.getItems(id).forEach(item => {
-			this.renderItem(item);
+		// List all items
+		KanbanAPI.getItems(id).forEach(item => { 	// For every item returned, render it
+			this.renderItem(item);					
 		});
 	}
 
@@ -63,6 +62,7 @@ export default class Column {
 		}
 	}
 
+	// Create the item instances
 	renderItem(data) {
 		const item = new Item(data.id, data.content);
 		this.elements.items.appendChild(item.elements.root);

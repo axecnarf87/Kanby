@@ -6,7 +6,7 @@ export default class Kanban {
 	constructor(root) {
 		this.root = root;
 
-		// for every column 
+		// For every column 
 		Kanban.columns().forEach(column => {
 
 			// Create an instance of Column class with comumn id and title

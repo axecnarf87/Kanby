@@ -1,23 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+	<title>Kanby</title>
+	<link rel="icon" href="/img/Kanby-symbol-760px.png">
+
+	<meta charset="UTF-8" />
+	<meta name="description"
+		content="An interactive Kanban Dashboard for recreational, integrating different timezone users" />
+	<meta name="author" content="UOL, Computer Science, Francesca Finetti" />
+	<meta name="keywords" content="Kanban, Project, Agile, JS, HTML, CSS" />
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Kanban Board</title>
+
 	<link rel="stylesheet" href="css/main.css">
+
+	<!-- Open Font licence: https://fonts.google.com/specimen/Rubik/about?category=Sans+Serif&query=rubik -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
-	<div class="kanban">
-		<!-- <div class="kanban__column">
-			<div class="kanban__column-title">Not Started</div>
-			<div class="kanban__items">
-				<div contenteditable class="kanban__item-input">Wash the dishes</div>
-				<div class="kanban__dropzone"></div>
+	<header>
+		<div class="header">
+			<div class="header__image">
+				<img src="img/Kanby-symbol-760px.png" alt="Kanby" width="100vw" />
 			</div>
-			<button class="kanban__add-item" type="button">+ Add</button>
-		</div> -->
+			<div class="header__name">
+				<h1"> Kanby </h1>
+			</div>
+		</div>
+	</header>
+
+	<div class="timezone">
+		Placeholder user with timezone
 	</div>
+
+	<div class="kanban">
+
+	</div>
+	
+	<div class="instruction">
+		<!-- refactor this -->
+		<ul>
+			<li>Click: To edit a card </li>
+			<li>Double Click: To change assigner</li>
+			<li>Right Click: To delete</li>
+		</ul>
+	</div>
+
 	<script src="js/main.js" type="module"></script>
+
 </body>
+
 </html>

@@ -1,13 +1,54 @@
-.kanban {
+/* Variables */
+:root {
+	--kanbygreen: #91c53e;
+}
+
+/* Fonts */
+body {
+	font-family: 'Rubik', sans-serif;
+}
+
+/* Header */
+.header {
+	display: flex;
+	margin: 25px;
+}
+
+.header__name {
+	justify-content: center;
+	align-items: center;
+	padding-left: 50px;
+	color: rgb(103, 103, 103);
+	font-size: 90px;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.header__image {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.timezone {
+	margin: auto;
+	margin-top: 10px ;
 	display: flex;
 	padding: 30px;
 	width: 750px;
-	background: #009578;
+	font-family: "Rubik", sans-serif;
+	background: #d87157;
 	border-radius: 5px;
 }
 
-.kanban * {
-	font-family: sans-serif;
+.kanban {
+	margin: auto;
+	margin-top: 10px ;
+	display: flex;
+	padding: 30px;
+	width: 750px;
+	font-family: "Rubik", sans-serif;
+	background: #19c165;
+	border-radius: 5px;
 }
 
 .kanban__column {
@@ -20,6 +61,7 @@
 
 .kanban__column-title {
 	margin-bottom: 20px;
+	text-align: center;
 	font-size: 30px;
 	color: white;
 	user-select: none;
@@ -31,17 +73,30 @@
 	background: white;
 	border-radius: 5px;
 	cursor: pointer;
+
 }
 
 .kanban__dropzone {
-	height: 15px;
+	height: 30px;
 	transition: background 1s, height 1s;
 }
 
-/* Class added with Javascript when dropzon is active */
+/* Class added with Javascript when dropzone is active */
 .kanban__dropzone--active {
 	height: 70px;
 	background: rgba(0, 0, 0, 0.25);
+}
+
+.kanban__add-user {
+	/* Created for user */
+	width: 100%;
+	padding: 10px 0;
+	font-size: 16px;
+	color: white;
+	background: rgb(rgb(253, 253, 11));
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 .kanban__add-item {
@@ -49,8 +104,24 @@
 	padding: 10px 0;
 	font-size: 16px;
 	color: white;
-	background: rgba(0, 0, 0, 0.1);
+	background: rgba(0, 0, 0, 0.4);
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+	/* Align to the bottom if more items are in the other columns */
+	position: relative;
+	right:0;
+	bottom:0;
+}
+
+.instruction {
+	font-size: 13px;
+	text-align-last: left;
+	float: right;
+	padding: 30px 30px 30px 0px;
+	border-radius: 5px;
+	color: white;
+	background-color: lightgray;
+	margin-top: 10px ;
 }
