@@ -1,11 +1,7 @@
-
 // API for Local Storage handling
 
 // consts refactory
 const localStorageName = "kanban-data";
-// const todoColumnID = 	1;
-// const doingColumnID = 	2;
-// const doneColumnID = 	3;
 
 // Export default class to import class into js files
 export default class KanbanAPI { 
@@ -92,15 +88,6 @@ export default class KanbanAPI {
 
 			// 
 			const targetColumn = data.find(column => column.id == newProps.columnId);
-
-			/* 
-			newProps should be 
-			 {
-				columnId: integer,
-				position: integer,
-				content: string
-			 } 
-			*/
 
 			// if there is no target column
 			if (!targetColumn) {

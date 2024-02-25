@@ -40,6 +40,7 @@ export default class Item {
 
 		// Right click -> ask to delete
 		this.elements.root.addEventListener("contextmenu", () => {
+
 			// Prompt the user to delete the item
 			const check = confirm("Are you sure you want to delete this item?");
 
@@ -50,6 +51,8 @@ export default class Item {
 				this.elements.input.removeEventListener("blur", onBlur); 			// delete events
 				this.elements.root.parentElement.removeChild(this.elements.root);	// delete the html
 			}
+
+			/* Avoid context menu here! */
 		});
 
 		/* Drag and drop */

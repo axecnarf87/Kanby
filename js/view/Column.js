@@ -17,13 +17,13 @@ export default class Column {
 		this.elements.title.textContent = title;		// title
 		this.elements.items.appendChild(topDropZone);	// Append the dropzone to the top of the column (before any items)
 
-		if (id === 1){ 		// add new elements only for the first column
+		// if (id === 1){ 		// add new elements only for the first column
 			this.elements.addItem.addEventListener("click", () => { // listener to 'add' button
 				const newItem = KanbanAPI.insertItem(id, ""); // add item into the column (to do)
 	
 				this.renderItem(newItem);	// render thes new item
 			});
-		}
+		// }
 
 		// List all items
 		KanbanAPI.getItems(id).forEach(item => { 	// For every item returned, render it
@@ -42,7 +42,7 @@ export default class Column {
 		range.selectNode(document.body);
 
 		// Add button '+ Add' only for first column
-		if (id === 1) {
+		// if (id === 1) {
 			// Return the HTML for the first column
 			return range.createContextualFragment(`
 				<div class="kanban__column">
@@ -51,15 +51,15 @@ export default class Column {
 					<button class="kanban__add-item" type="button">+ Add</button>
 				</div>
 			`).children[0]; // get the first one
-		} else {
-			// Return the HTML for the columns after the first
-			return range.createContextualFragment(`
-				<div class="kanban__column">
-					<div class="kanban__column-title"></div>
-					<div class="kanban__column-items"></div>
-				</div>
-			`).children[0]; // get the first one
-		}
+		// } else {
+		// 	// Return the HTML for the columns after the first
+		// 	return range.createContextualFragment(`
+		// 		<div class="kanban__column">
+		// 			<div class="kanban__column-title"></div>
+		// 			<div class="kanban__column-items"></div>
+		// 		</div>
+		// 	`).children[0]; // get the first one
+		// }
 	}
 
 	// Create the item instances
