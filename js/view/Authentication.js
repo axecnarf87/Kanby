@@ -1,9 +1,31 @@
+import { timezones } from '../data/data.js'; // Import the timezones from data.js
 
 
 export default class Authentication {
 
     constructor(root) {
         this.root = root;
+
+        // shows timezones options based on data.js
+        function createTimezoneOptions() {
+            const datalist = document.getElementById('timezones');
+
+            // Clear existing options
+            datalist.innerHTML = '';
+
+            // Create new options based on the timezones array
+            timezones.forEach(timezone => {
+                const option = document.createElement('option');
+                option.value = timezone.value;
+                option.textContent = timezone.label;
+                datalist.appendChild(option);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded');
+            createTimezoneOptions();
+        });
 
         function setFormMessage(formElement, type, message) {
             const messageElement = formElement.querySelector(".form__message");
@@ -22,7 +44,7 @@ export default class Authentication {
             inputElement.classList.remove("form__input--error");
             inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
         }
-
+    
         document.addEventListener("DOMContentLoaded", () => {
             const loginForm = document.querySelector("#login");
             const createAccountForm = document.querySelector("#createAccount");
@@ -39,13 +61,14 @@ export default class Authentication {
                 createAccountForm.classList.add("form--hidden");
             });
 
-            loginForm.addEventListener("submit", e => {
-                e.preventDefault();
+            // Delecting because no real check will be made
+            // loginForm.addEventListener("submit", e => {
+            //     e.preventDefault();
 
-                // Perform your AJAX/Fetch login
+            //     // Perform your AJAX/Fetch login
 
-                setFormMessage(loginForm, "error", "Invalid username/password combination");
-            });
+            //     setFormMessage(loginForm, "error", "Invalid username/password combination");
+            // });
 
             document.querySelectorAll(".form__input").forEach(inputElement => {
                 inputElement.addEventListener("blur", e => {

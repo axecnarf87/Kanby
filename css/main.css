@@ -2,6 +2,7 @@
 :root {
 	/* --kanbygreen: #19c165; */
 	--kanbygreen: #91c53e;
+	--tzcoral: #e77458;
 }
 
 /* Fonts */
@@ -13,7 +14,7 @@ body {
 .header {
 	display:flex;
 	margin-left: 50px;
-	padding: 0;
+	padding: 20px;
 }
 
 .header__name {
@@ -22,6 +23,8 @@ body {
 	padding-left: 10px;
 	color: rgb(103, 103, 103);
 	font-size: 80px;
+	font-family: 'Rubik', sans-serif;
+	font-weight: 700;
 }
 
 /* Instructions */
@@ -33,19 +36,16 @@ body {
     justify-content: flex-end;
     font-size: 13px;
     text-align: left; 
-    padding: 30px 30px 30px 0px;
+    padding:20px;
     border-radius: 5px;
     color: white;
     background-color: lightgray;
-    margin-top: 10px;
 	margin-right: 10%;
 }
 
 /* Login */
 .authentication {
 	/* variables */
-	--color-primary: #009579;
-	--color-primary-dark: #007f67;
 	--color-secondary: #252c6a;
 	--color-error: #cc3333;
 	--color-success: #4bb544;
@@ -115,7 +115,7 @@ body {
 }
 
 .form__input:focus {
-	border-color: var(--color-primary);
+	border-color: var(--kanbygreen);
 	background: #ffffff;
 }
 
@@ -129,11 +129,11 @@ body {
 	border-radius: var(--border-radius);
 	outline: none;
 	cursor: pointer;
-	background: var(--color-primary);
+	background: var(--kanbygreen);
 }
 
 .form__button:hover {
-	background: var(--color-primary-dark);
+	background: var(--tzcoral);
 }
 
 .form__button:active {
@@ -206,34 +206,69 @@ body {
 	width: 100%;
 	padding: 10px 0;
 	font-size: 16px;
-	color: white;
-	background: rgb(rgb(253, 253, 11));
+	color: var(--kanbygreen);
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 }
 
-.kanban__add-item {
-	width: 100%;
-	padding: 10px 0;
-	font-size: 16px;
-	color: white;
-	background: rgba(0, 0, 0, 0.4);
+/* username in kanban board */
+.kanban__user-input {
+    width: 93%; 
+    padding: 8px; 
+	background-color: var(--kanbygreen);
 	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+	/* border: 1px solid white; 
+	border-radius: 5px; */
+	color: white;
+	font-family: "Rubik", sans-serif;
+	font-size: medium;
+}
+
+.kanban__user-input:focus {
+    outline: none; 
+    border-color: transparent; 
+}
+
+.kanban__add-item {
+    width: 19%;
+    margin: auto; 
+    padding: 10px 0;
+    font-size: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+	display: flex;
+    justify-content: center;
 }
 
 
 /* Timezone */
 .timezone{
 	border-radius: 5px;
-	background-color: #e77458;
+	background-color: var(--tzcoral);
 	width: 750px;
 	margin: auto;
 	padding: 30px;
+	color: white;
+	text-align: right;
 }
+
+.user-hide-toggle {
+	cursor: pointer;
+	padding: 10px;
+	color: white;
+	text-align: center;
+	margin-bottom: 10px;
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 50px;
+}
+
+
+
 .user {
 	display: flex;
 	margin: 0px;
@@ -313,4 +348,9 @@ body {
     left: 0;
     height: 100%;
     background-color: var(--kanbygreen);
+}
+
+/* Hide user elements with the form--hidden class */
+.timezone .user.users--hidden {
+    display: none !important;
 }

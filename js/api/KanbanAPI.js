@@ -25,13 +25,14 @@ export default class KanbanAPI {
 
 	// Insert a new item
 	// pass column id and content
-	static insertItem(columnId, content) {
+	static insertItem(columnId, content, user) {
 		const data = read(); 										// Read the data from local storage
 		const column = data.find(column => column.id == columnId);	// Find the column
 
 		const item = {												// New item object
 			id: Math.floor(Math.random() * 100000),						// Generate id randomly
-			content														// add content
+			content,
+			user
 		};
 
 		// Error: if the column doesn't exist
@@ -77,6 +78,9 @@ export default class KanbanAPI {
 
 		// If we don't find the newProps arg, we keep the current content, otherwise we use newProps
 		item.content = newProps.content === undefined ? item.content : newProps.content;
+
+		// added to consider also user assigned
+		item.user = newProps.user === undefined ? item.user : newProps.user;
 
 		/* Update column and position */
 

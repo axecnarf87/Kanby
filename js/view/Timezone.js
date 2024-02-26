@@ -9,6 +9,14 @@ export default class timezone {
         this.renderUsers();
         this.updateLinePositionForUsers();
         this.addHourLabelsForUsers();
+
+        // Add text at the top to toggle user visibility
+        const hideDiv = document.createElement('div');
+        hideDiv.textContent = 'Hide/Show Users';
+        hideDiv.classList.add('user-hide-toggle');
+        hideDiv.addEventListener('click', this.hideUsers.bind(this));
+        this.parentElement.insertBefore(hideDiv, this.parentElement.firstChild);
+
     }
 
     // Render user element
@@ -29,11 +37,11 @@ export default class timezone {
 
         // Gets offset with the local and utc timezone in case local time is not UTC
         // users timezone are based on difference with UTC
-        const browserTimezoneOffset = new Date().getTimezoneOffset() / 60; 
+        const browserTimezoneOffset = new Date().getTimezoneOffset() / 60;
 
         // for each user in the users array 
         this.users.forEach(user => {
-            
+
             // create div with class user
             const userElement = document.createElement("div");
             userElement.classList.add("user");
@@ -64,7 +72,7 @@ export default class timezone {
 
             /* logic for colouring the part with the user availability */
             // convert user.timezone to float type 
-            const timezoneOffset = parseFloat(user.timezone);   
+            const timezoneOffset = parseFloat(user.timezone);
 
             // Convert user.startTime and user.endTime to local time by considering difference with utc and local time
             let adjustedStartTime = user.startTime - timezoneOffset + browserTimezoneOffset;
@@ -86,14 +94,14 @@ export default class timezone {
                 // first part (before midnight)
                 const firstPercentage = (24 - adjustedStartTime) / 24 * 100; // calculate and ajudst first part to percentage
                 const colouredWidthFirst = graphElement.offsetWidth * (firstPercentage / 100);   // calculate width first part
-                const colouredPortionFirst = this.createColoredPortion(startTimePercentage, colouredWidthFirst ); // created coloured portion
+                const colouredPortionFirst = this.createColoredPortion(startTimePercentage, colouredWidthFirst + 1); // created coloured portion
                 graphElement.appendChild(colouredPortionFirst); // add to div user__time-graph
 
                 // second part (after midnight)
                 const colouredWidthSecond = graphElement.offsetWidth * (endTimePercentage / 100);
                 const colouredPortionSecond = this.createColoredPortion(0, colouredWidthSecond);
                 graphElement.appendChild(colouredPortionSecond);
-                
+
             } else {
                 // if times doesn't cross midnight
                 // only one coloured part 
@@ -102,11 +110,13 @@ export default class timezone {
                 graphElement.appendChild(colouredPortion);
             }
         });
+
+
     }
 
     // Color the portion inside user__time-graph
     createColoredPortion(leftPercentage, width) {
-        
+
         // created new div with class 'coloured-portion'
         const colouredPortion = document.createElement("div");
         colouredPortion.classList.add("coloured-portion");
@@ -119,7 +129,7 @@ export default class timezone {
 
     // Create a red line for each '.user__time-graph' showing current time based on local time zone
     updateLinePositionForUsers() {
-        
+
         // Variables on system clock (local time zone)
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
         const now = new Date();                                 // current time
@@ -158,4 +168,12 @@ export default class timezone {
             }
         });
     }
+
+    hideUsers() {
+        const userElements = this.parentElement.querySelectorAll('.user');
+        userElements.forEach(user => {
+            user.classList.toggle('users--hidden'); // Toggle the 'form--hidden' class
+        });
+    }
+
 }
