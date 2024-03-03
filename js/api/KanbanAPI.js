@@ -107,6 +107,7 @@ export default class KanbanAPI {
 
 		// Save to local storage
 		save(data);
+		return item;
 	}
 
 	/* Delete an existing item */ 

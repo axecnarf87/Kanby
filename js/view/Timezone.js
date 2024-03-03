@@ -17,6 +17,9 @@ export default class timezone {
         hideDiv.addEventListener('click', this.hideUsers.bind(this));
         this.parentElement.insertBefore(hideDiv, this.parentElement.firstChild);
 
+        // Hide users by default
+        this.hideUsers();
+
     }
 
     // Render user element

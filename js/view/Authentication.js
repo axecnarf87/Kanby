@@ -23,7 +23,6 @@ export default class Authentication {
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM loaded');
             createTimezoneOptions();
         });
 
